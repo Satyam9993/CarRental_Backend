@@ -24,7 +24,8 @@ const UserSchema = new Schema({
         required: true,
     },
     otp:{
-        type: Number
+        type: Number,
+        required:true,
     },
     profilephoto:{
         type : "String",
