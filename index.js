@@ -25,7 +25,7 @@ if (process.env.NODE_ENV === "production") {
 }
 
 app.get("/", (req, res)=>{
-  res.send({"Success":"true"});
+  res.send({"Success":"PASS"});
 })
 
 // Available Routes
