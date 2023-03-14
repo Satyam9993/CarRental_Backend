@@ -10,10 +10,8 @@ const connectToMongo = require('./db');
 connectToMongo();
 
 
-
 const app = express()
 const port = process.env.PORT || 5000
-
 
 // middleware to fetch data
 app.use(helmet.crossOriginResourcePolicy({policy : "cross-origin"}))
