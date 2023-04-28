@@ -43,3 +43,15 @@ exports.AddCar=async (req, res, next)=>{
         })
     }
 }
+
+exports.getAllCar = async(req, res, next)=>{
+    try {
+        // TODO
+
+    } catch (error) {
+        next(error)
+        return res.status(500).send({
+            "err": error
+        })
+    }
+}
