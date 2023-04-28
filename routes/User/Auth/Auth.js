@@ -5,7 +5,7 @@ const {
     signInUser, 
     EmailVerification, 
     // loginUserdata
-} = require("../../controller/Auth/Auth")
+} = require("../../../controller/User/Auth/Auth")
 // const fetchUser = require('../../middleware/fetchUser')
 
 
