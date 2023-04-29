@@ -3,10 +3,11 @@ const Car = require("../../models/Cars");
 exports.getAllCars = async (req, res) => {
     try {
         const {
-            cityId
+            location
         } = req.query;
-        if(!cityId) return res.status(402).send({ success: false, error: "data is missing error" })
-        await Car.find({ city : cityId }).then(cars => {
+        console.log(location);
+        if(!location) return res.status(402).send({ success: false, error: "data is missing error" })
+        await Car.find({ location : location }).then(cars => {
             res.status(200).send({cars : cars});
         }).catch(err => {
             res.status(402).send({ success: false, error: "server error" });

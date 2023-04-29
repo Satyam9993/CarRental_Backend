@@ -27,6 +27,7 @@ exports.AddCar=async (req, res, next)=>{
             imageAlt: value.imageAlt,
             price : value.price,
             color : value.color,
+            location : value.location,
             added_by : req.admin.id
         }).then(car=>{
             res.status(201).send({
