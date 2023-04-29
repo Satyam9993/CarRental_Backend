@@ -19,7 +19,6 @@ exports.AddCar=async (req, res, next)=>{
         if (error) {
             return res.status(422).send({ error: error.details[0].message })
         }
-        console.log(req.admin.id);
         await Car.create({
             name: value.name,
             desc: value.desc,

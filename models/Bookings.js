@@ -6,10 +6,10 @@ const BookingSchema = new Schema({
         type : mongoose.Schema.Types.ObjectId,
         ref : 'booking'
     },
-    carId : {
+    carId : [{
         type : mongoose.Schema.Types.ObjectId,
         ref : 'booking'
-    },
+    }],
     booking_start_date : {
         type : Date,
         required: true,
@@ -20,7 +20,24 @@ const BookingSchema = new Schema({
         required: true
     },
     location : {
-        // TODO: schema of Location is left
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'locations'
+    },
+    pickuptime : {
+        type: TimeRanges,
+        required : true
+    },
+    auto_pickup : {
+        type : Boolean,
+        default: true
+    },
+    pickup_cordinate : {
+        long : {
+            type : Number,
+        },
+        lat : {
+            type : Number,
+        },
     },
     createdon : {
         type: Date,
