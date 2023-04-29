@@ -34,6 +34,10 @@ const CarSchema = new Schema({
         type : "String",
         required : true
     },
+    location : {
+        type : mongoose.Schema.Types.ObjectId,
+        ref : 'locations'
+    },
     added_by : {
         type : mongoose.Schema.Types.ObjectId,
         ref : 'admin'

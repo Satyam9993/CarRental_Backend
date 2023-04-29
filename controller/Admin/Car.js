@@ -1,5 +1,6 @@
 const Car = require('../../models/Cars');
 const Joi = require('joi');
+const JoiObjectId = require('joi-objectid')(Joi);
 
 const Carschema = Joi.object({
     name: Joi.string().required(),
@@ -7,6 +8,7 @@ const Carschema = Joi.object({
     desc: Joi.string().required(),
     imageAlt: Joi.string().required(),
     price : Joi.number().required(),
+    location : JoiObjectId().required(),
     color : Joi.string().required(),
 });
 exports.AddCar=async (req, res, next)=>{
