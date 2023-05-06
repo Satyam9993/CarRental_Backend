@@ -5,7 +5,6 @@ exports.getAllCars = async (req, res) => {
         const {
             location
         } = req.query;
-        console.log(location);
         if(!location) return res.status(402).send({ success: false, error: "data is missing error" })
         await Car.find({ location : location }).then(cars => {
             res.status(200).send({cars : cars});
