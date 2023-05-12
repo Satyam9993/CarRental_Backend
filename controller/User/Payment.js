@@ -1,5 +1,4 @@
 const stripe = require('stripe')(process.env.STRIPE_KEY);
-const YOUR_DOMAIN = 'http://localhost:4242';
 const Booking = require('../../models/Bookings');
 const Cars = require('../../models/Cars');
 
@@ -11,17 +10,14 @@ exports.payment = async (req, res) => {
             userId: req.user.id,
             carId: req.body.cart,
             location: req.body.location,
-            auto_pickup: true,
+            auto_pickup: req.body.auto_pickup,
             duration: req.body.duration,
             durationdate: {
                 from : new Date,
                 to : req.body.durationdate.to
             },
             amount: amount,
-            pickup_cordinate: {
-                long: "",
-                lat: ""
-            }
+            pickup_loc: req.body.pickup_loc
         }).then(async (book) => {
             // Create Stripe checkout session
             const session = await stripe.checkout.sessions.create({

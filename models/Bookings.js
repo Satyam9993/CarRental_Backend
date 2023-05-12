@@ -39,13 +39,8 @@ const BookingSchema = new Schema({
             default: Date.now 
         }
     },
-    pickup_cordinate : {
-        long : {
-            type : Number,
-        },
-        lat : {
-            type : Number,
-        },
+    pickup_loc : {
+        type : Object,
     },
     amount:{
         type : Number,
