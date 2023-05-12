@@ -35,7 +35,7 @@ exports.payment = async (req, res) => {
                     },
                 ],
                 mode: 'payment',
-                success_url: `http://localhost:5000/api/pay/success?session_id={CHECKOUT_SESSION_ID}&booking_id=${book._id}`, // modify the URL to point to your server
+                success_url: `https://car-rental-backend-xi.vercel.app/api/pay/success?session_id={CHECKOUT_SESSION_ID}&booking_id=${book._id}`, // modify the URL to point to your server
                 cancel_url: 'https://car-rental-frontend-rust.vercel.app/cancel',
                 billing_address_collection: 'auto',
             });
