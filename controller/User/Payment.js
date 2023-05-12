@@ -36,7 +36,7 @@ exports.payment = async (req, res) => {
                 ],
                 mode: 'payment',
                 success_url: `http://localhost:5000/api/pay/success?session_id={CHECKOUT_SESSION_ID}&booking_id=${book._id}`, // modify the URL to point to your server
-                cancel_url: 'https://example.com/cancel',
+                cancel_url: 'https://car-rental-frontend-rust.vercel.app/cancel',
                 billing_address_collection: 'auto',
             });
 
@@ -93,7 +93,7 @@ exports.Success = async (req, res, next) => {
                         "booked_by": book.userId
                     }
                 }).then(car => {
-                    res.redirect('http://localhost:3000');
+                    res.redirect('https://car-rental-frontend-rust.vercel.app/');
                 }).catch(err => {
                     res.status(500).json({ error: 'Something went wrong' });
                 })
