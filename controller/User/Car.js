@@ -6,7 +6,7 @@ exports.getAllCars = async (req, res) => {
             location
         } = req.query;
         if(!location) return res.status(402).send({ success: false, error: "data is missing error" })
-        await Car.find({ location : location }).then(cars => {
+        await Car.find({ location : location, isbooked : false }).then(cars => {
             res.status(200).send({cars : cars});
         }).catch(err => {
             res.status(402).send({ success: false, error: "server error" });

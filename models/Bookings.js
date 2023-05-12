@@ -4,32 +4,40 @@ const { Schema } = mongoose;
 const BookingSchema = new Schema({
     userId : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'booking'
+        ref : 'booking',
+        required : true
     },
     carId : [{
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'booking'
+        ref : 'booking',
+        required : true
     }],
-    booking_start_date : {
-        type : Date,
-        required: true,
-        default: Date.now 
-    },
-    booking_end_date : {
-        type: Date,
-        required: true
-    },
     location : {
         type : mongoose.Schema.Types.ObjectId,
-        ref : 'locations'
-    },
-    pickuptime : {
-        type: TimeRanges,
+        ref : 'locations',
         required : true
     },
+    // pickuptime : {
+    //     type: TimeRanges,
+    //     required : true
+    // },
     auto_pickup : {
         type : Boolean,
         default: true
+    },
+    duration:{
+        type : Number,
+        default: 1
+    },
+    durationdate : {
+        from : {
+            type: Date,
+            default: Date.now 
+        },
+        to : {
+            type: Date,
+            default: Date.now 
+        }
     },
     pickup_cordinate : {
         long : {
@@ -38,6 +46,18 @@ const BookingSchema = new Schema({
         lat : {
             type : Number,
         },
+    },
+    amount:{
+        type : Number,
+        required: true
+    },
+    status: {
+        type : String,
+        default : "initiative",
+        enum : ["initiative", "active", "closed"]
+    },
+    session_id: {
+        type : Object
     },
     createdon : {
         type: Date,

@@ -7,7 +7,7 @@ const fetchuser = (req, res, next) => {
         res.status(401).send({ error: "access denied" })
     }
     try {
-        const data = jwt.verify(token, JWT_SECRET)
+        const data = jwt.verify(token.slice(7), JWT_SECRET)
         req.user = data.user;
         next();
     } catch (error) {
