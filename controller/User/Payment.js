@@ -79,18 +79,19 @@ exports.Success = async (req, res, next) => {
 
         Booking.findByIdAndUpdate({_id: booking_id}, {
             $set: {
-                status : "active"
+                status : "active",
+                "session" :{
+                    session_id:session_id,
+                    amount: payment_intent.amount,
+                    payment_method: payment_intent.payment_method_types[0],
+                    status: payment_intent.status,
+                }
             }
         }).then(async book => {
             await book.carId.map(async id => {
                 await Cars.findByIdAndUpdate({_id:id}, {
                     $set:{
-                        "isbooked" : true,
-                        "session_id" :{
-                                amount: payment_intent.amount,
-                                payment_method: payment_intent.payment_method_types[0],
-                                status: payment_intent.status,
-                        }
+                        "isbooked" : true
                     },
                     $push : {
                         "booked_by": book.userId

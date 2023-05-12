@@ -56,7 +56,7 @@ const BookingSchema = new Schema({
         default : "initiative",
         enum : ["initiative", "active", "closed"]
     },
-    session_id: {
+    session: {
         type : Object
     },
     createdon : {
